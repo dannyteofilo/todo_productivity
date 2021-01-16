@@ -4,6 +4,9 @@ import TodoApp from './TodoApp';
 
 import configureStore from './redux/store/store';
 
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
+
 async function init() {
   console.log('Waiting for store')
 
