@@ -1,14 +1,26 @@
 .todo-screen-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
+    background-color: #ffff00;
 
     >.todo-card{
         width: 80%;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 20px;
+
+        >.title{
+            color: #40c4ff;
+            text-decoration: underline;
+        }
+
+        >.form{
+            width: 80%;
+        }
     }
 }

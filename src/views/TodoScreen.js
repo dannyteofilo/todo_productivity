@@ -1,15 +1,18 @@
-import React from 'react'
-import { Card, CardTitle, CardText, CardActions, CardMenu, IconButton, Button } from 'react-mdl'
+import React from 'react';
+import { Card } from 'react-mdl';
+import { Form } from '../components/Form';
+
 
 export const TodoScreen = () => {
     return (
         <div className='todo-screen-container'>
+            <i className='fas fa-check-square fa-5x'></i>
             <Card shadow={4} className="todo-card">
                 <div className='title'>
-                    Todo Productivity
+                    <h3>Todo Productivity</h3>
                 </div>
                 <div className='form'>
-                    Form
+                    <Form />
                 </div>
                 <div className='list'>
                     List
