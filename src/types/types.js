@@ -6,4 +6,10 @@ export const types = {
     todo_list_request_success: 'todo_list_request_success',
     todo_list_request_fetch: 'todo_list_request_fetch',
 
+    // add
+
+    add_todo: 'add_todo',
+    toggle_todo: 'toggle_todo',
+    delete_todo: 'delete_todo',
+
 }

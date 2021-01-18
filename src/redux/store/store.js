@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { TodoListReducer } from '../reducers/todoList';
+import { todoListReducer } from '../reducers/todoList';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './rootSaga';
 
@@ -7,7 +7,7 @@ import rootSaga from './rootSaga';
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const reducers = combineReducers({
-    todoList: TodoListReducer,
+    todoList: todoListReducer,
 })
 
 let store = null;

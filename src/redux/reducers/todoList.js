@@ -1,38 +1,33 @@
-import { types } from "../../types/types";
+import { types } from '../../types/types';
 
-const initialState = {
-    requesting: false,
-    error: null,
-    data: null
-}
+const initialstate = [];
 
-export const TodoListReducer = (state = initialState, action) => {
+export const todoListReducer = (state = initialstate, action) => {
 
     switch (action.type) {
-        case types.todo_list_request_start:
-            return {
+        case types.add_todo: {
+            const { id, content } = action.payload;
+            return [
                 ...state,
-                requesting: true,
-                error: false
-            };
+                {
+                    id,
+                    content,
+                    completed: false
+                }
+            ]
+        }
 
-        case types.todo_list_request_success:
-            return {
-                ...state,
-                data: action.payload
-            };
+        case types.toggle_todo: {
+            const { id } = action.payload;
+            return state.map(todo => (
+                todo.id === id ? { ...todo, completed: !todo.completed } : todo
+            ))
+        }
 
-        case types.todo_list_request_failed:
-            return {
-                ...state,
-                ...action.payload
-            };
-
-        case types.todo_list_request_ends:
-            return {
-                ...state,
-                requesting: false
-            };
+        case types.delete_todo: {
+            const { id } = action.payload;
+            return state.filter(todo => todo.id !== id)
+        }
 
         default:
             return state;
