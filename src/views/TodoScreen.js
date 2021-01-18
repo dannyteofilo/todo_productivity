@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from 'react-mdl';
 import { Form } from '../components/Form';
+import { TodoList } from '../components/TodoList';
 
 
 export const TodoScreen = () => {
@@ -15,7 +16,7 @@ export const TodoScreen = () => {
                     <Form />
                 </div>
                 <div className='list'>
-                    List
+                    <TodoList/>
                 </div>
             </Card>
         </div>
