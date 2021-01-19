@@ -11,5 +11,12 @@ export const types = {
     add_todo: 'add_todo',
     toggle_todo: 'toggle_todo',
     delete_todo: 'delete_todo',
+    set_status: 'set_status',
+    update_todo:'update_todo',
+    fetch_update:'fetch_update',
+    fetch_update_reset:'fetch_update_reset',
+
+    // Filters
+    set_filter: 'set_filter',    
 
 }
