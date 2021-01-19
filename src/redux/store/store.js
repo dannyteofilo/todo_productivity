@@ -1,17 +1,21 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { todoListReducer } from '../reducers/todoList';
+import { filter } from '../reducers/filters';
+import { todoUpdateReducer } from '../reducers/todoUpdate';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './rootSaga';
+// import rootSaga from './rootSaga';
 
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const reducers = combineReducers({
     todoList: todoListReducer,
+    filter,
+    update: todoUpdateReducer
 })
 
 let store = null;
-const sagaMiddleware = createSagaMiddleware();
+// const sagaMiddleware = createSagaMiddleware();
 
 const configureStore = () => {
     return new Promise((resolve, reject) => {
@@ -19,10 +23,10 @@ const configureStore = () => {
             store = createStore(
                 reducers,
                 composeEnhancers(
-                    applyMiddleware(sagaMiddleware)
+                    // applyMiddleware(sagaMiddleware)
                 )
             );
-            sagaMiddleware.run(rootSaga);
+            // sagaMiddleware.run(rootSaga);
             setTimeout(() => resolve(store));
         } catch (e) {
             reject(e);
