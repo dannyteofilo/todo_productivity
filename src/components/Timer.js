@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import React from 'react';
-import { Icon, IconToggle } from 'react-mdl';
+import { IconToggle } from 'react-mdl';
 
 export const Timer = ({ time, play, finish }) => {
 
@@ -26,6 +26,10 @@ export const Timer = ({ time, play, finish }) => {
     }, [start, seconds]);
 
     useEffect(() => {
+        setTimeFormat(makeFormat());
+    }, [seconds])
+
+    useEffect(() => {
         setStart(play);
     }, [play])
 
@@ -34,7 +38,6 @@ export const Timer = ({ time, play, finish }) => {
     }
 
     const handleRestart = () => {
-        setTimeFormat(makeFormat());
         setSeconds(time);
     }
 
@@ -47,7 +50,6 @@ export const Timer = ({ time, play, finish }) => {
     }
 
     const countDown = () => {
-        let format = '';
         interval = setInterval(() => {
             if (start) {
                 setSeconds(seconds => seconds - 1);
@@ -60,7 +62,6 @@ export const Timer = ({ time, play, finish }) => {
                     setStart(!start)
                     clearInterval(interval);
                 }
-                setTimeFormat(makeFormat())
             }
         }, 1000);
     }
@@ -72,7 +73,6 @@ export const Timer = ({ time, play, finish }) => {
             <div className='time'>
                 {timeFormat}
             </div>
-            <Icon name="timer" />
         </div>
     )
 }
