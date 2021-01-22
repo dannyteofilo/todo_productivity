@@ -17,6 +17,8 @@
         justify-content: center;
         align-items: center;
         margin-top: 20px;
+        padding: 40px 0;
+        max-height: 85vh;
 
         >.title{
             color: #40c4ff;
@@ -27,8 +29,25 @@
             }            
         }
 
-        >.form{
-            width: 80%;
+        >.list{
+            max-height: 500px;
+            overflow: scroll;
         }
-    }
+
+        >.form,.list,.dividir{
+            width: 50%;
+            @include respond-to(small-screens){
+                width: 90%;
+            }
+
+            @include respond-to(medium-screens){
+                width: 70%;
+            }
+        }
+
+        >.dividir{
+           height: 1px;
+           background-color: gray;
+        }
+    }   
 }
