@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import React from 'react';
+import React, { useCallback } from 'react';
 import { IconToggle } from 'react-mdl';
 
 export const Timer = ({ time, play, finish }) => {
@@ -10,44 +10,10 @@ export const Timer = ({ time, play, finish }) => {
     const [timeFormat, setTimeFormat] = useState('0:00')
 
     const oneMinute = 60, evaluateOneMinute = 59, evaluateZeroMinutes = 0, timeOutSeconds = -1, evaluateTenSeconds = 9, lastSecond = 2;
-    let interval = null, minutesLeft = 0, secondsLeft = 0, arrInterval = [];
+    let interval = null, minutesLeft = 0, secondsLeft = 0;
 
-    useEffect(() => {
-        minutesLeft = Math.floor(seconds / oneMinute);
-        secondsLeft = seconds - minutesLeft * oneMinute;
-        console.log('seconds : ', seconds);
-        if (seconds === 0) {
-            finish()
-        }
-        countDown();
-        return () => {
-            clearInterval(interval);
-        }
-    }, [start, seconds]);
-
-    useEffect(() => {
-        setTimeFormat(makeFormat());
-    }, [seconds])
-
-    useEffect(() => {
-        setStart(play);
-    }, [play])
-
-    const handleStart = () => {
-        setStart(!start);
-    }
-
-    const handleRestart = () => {
-        setSeconds(time);
-    }
-
-    const makeFormat = () => {
-        if (secondsLeft > evaluateTenSeconds) {
-            return `${minutesLeft.toString()}:${secondsLeft.toString()}`;
-        } else {
-            return `${minutesLeft.toString()}:0${secondsLeft.toString()}`;
-        }
-    }
+    minutesLeft = Math.floor(seconds / oneMinute);
+    secondsLeft = seconds - minutesLeft * oneMinute;
 
     const countDown = () => {
         interval = setInterval(() => {
@@ -65,6 +31,40 @@ export const Timer = ({ time, play, finish }) => {
             }
         }, 1000);
     }
+
+    const makeFormat = useCallback(() => {
+        if (secondsLeft > evaluateTenSeconds) {
+            return `${minutesLeft.toString()}:${secondsLeft.toString()}`;
+        } else {
+            return `${minutesLeft.toString()}:0${secondsLeft.toString()}`;
+        }
+    }, [minutesLeft, secondsLeft]);
+
+    const handleStart = () => {
+        setStart(!start);
+    }
+
+    const handleRestart = () => {
+        setSeconds(time);
+    }
+    useEffect(() => {
+        countDown();
+        if (seconds === 0) {
+            finish()
+        }
+        return () => {
+            clearInterval(interval);
+        }
+    }, [seconds, start, interval, countDown, finish]);
+
+    useEffect(() => {
+        setTimeFormat(makeFormat());
+    }, [seconds, makeFormat])
+
+
+    useEffect(() => {
+        setStart(play);
+    }, [play])
 
     return (
         <div className='timer'>

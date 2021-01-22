@@ -1,8 +1,8 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, compose } from 'redux';
 import { todoListReducer } from '../reducers/todoList';
 import { filter } from '../reducers/filters';
 import { todoUpdateReducer } from '../reducers/todoUpdate';
-import createSagaMiddleware from 'redux-saga';
+// import createSagaMiddleware from 'redux-saga';
 // import rootSaga from './rootSaga';
 
 

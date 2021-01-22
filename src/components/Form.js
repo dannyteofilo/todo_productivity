@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from '../hooks/useForm';
 import { Textfield, Button, Icon } from 'react-mdl';
-import { addTodo, fetchUpdateReset, updatetodo } from '../redux/actions/addTodo';
+import { addTodo, updatetodo } from '../redux/actions/addTodo';
 import { useDispatch, useSelector } from 'react-redux';
 import {SIZEOPTIONS} from '../constants/constants';
 
@@ -32,10 +32,7 @@ export const Form = () => {
         if (update) {
             const { id, text, size } = update;
             reset({ id, text, size, isUpdate: true });
-        }
-        return () => {
-            dispatch(fetchUpdateReset())
-        }
+        }    
     }, [update])
 
     const handleAdd = (e) => {
