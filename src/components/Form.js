@@ -50,7 +50,7 @@ export const Form = () => {
     }
 
     const setTime = () => {
-        const hour = 60, small = 30, medium = 45, large = 60;
+        const hour = 10, small = 3, medium = 45, large = 60;
         switch (form.timeSelect) {
             case '0': {
                 return small * hour;
@@ -66,7 +66,6 @@ export const Form = () => {
     }
 
     const handleSelect = (e) => {
-        console.log('handle select: ', e);
         handleInputChange(e);
     }
     return (

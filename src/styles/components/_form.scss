@@ -1,10 +1,18 @@
 .form-container{
     width: 80%;
+    margin: auto;
     
     >form{
         width: 100%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+
+        >.select{
+            width: 140px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
     }
 }
