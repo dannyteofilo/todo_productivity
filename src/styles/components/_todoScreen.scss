@@ -11,6 +11,19 @@
         color: white;
     }
 
+    .code{
+        height: 50px;
+        margin-top: 10px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+
+        .fab{
+            color: white;
+        }
+    }
+
     >.todo-card{
         width: 80%;
         display: flex;
@@ -31,7 +44,7 @@
 
         >.list{
             max-height: 500px;
-            overflow: scroll;
+            overflow-y: scroll;
         }
 
         >.form,.list,.dividir{
@@ -48,6 +61,7 @@
         >.dividir{
            height: 1px;
            background-color: gray;
+           margin-bottom: 10px;
         }
     }   
 }

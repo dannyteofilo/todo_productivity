@@ -48,7 +48,7 @@ export const Form = () => {
     }
 
     const setTime = () => {
-        const hour = 10, small = 3, medium = 45, large = 60;
+        const hour = 60, small = 30, medium = 45, large = 60;
         switch (form.size) {
             case 'small': {
                 return small * hour;

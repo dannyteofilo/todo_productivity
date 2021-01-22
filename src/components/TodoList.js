@@ -55,6 +55,7 @@ export const TodoList = () => {
                             .map((todo, index) => {
                                 return <Todo key={index}
                                     todo={todo}
+                                    draggable={true}
                                     timer={false}
                                     remove={true}
                                     update={true}

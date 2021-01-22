@@ -17,3 +17,7 @@ export const STATUS = {
     ONTODO: 'todo',
     ONDONE: 'done',
 }
+
+export const CODE = {
+    url: 'https://github.com/dannyteofilo/todo_productivity',
+}
