@@ -3,15 +3,16 @@ import { useForm } from '../hooks/useForm';
 import { Textfield, Button, Icon } from 'react-mdl';
 import { addTodo, fetchUpdateReset, updatetodo } from '../redux/actions/addTodo';
 import { useDispatch, useSelector } from 'react-redux';
+import {SIZEOPTIONS} from '../constants/constants';
 
 export const Form = () => {
 
     const defaultForm = {
         text: '',
-        timeSelect: '0',
+        size: 'small',
         isUpdate: false
     }
-    const timeOpt = ['Small', 'Medium', 'Large']
+    const timeOpt = [...SIZEOPTIONS]
 
 
     const store = useSelector(store => store)
@@ -20,17 +21,17 @@ export const Form = () => {
     const { update } = store;
     const [form, setform] = useState({ defaultForm })
     const [formValues, handleInputChange, reset] = useForm(defaultForm);
-    const { text, timeSelect } = formValues
+    const { text, size } = formValues
 
     useEffect(() => {
-        const { text, timeSelect } = formValues;
-        setform({ text, timeSelect })
+        const { text, size } = formValues;
+        setform({ text, size })
     }, [formValues])
 
     useEffect(() => {
         if (update) {
-            const { id, text, timeSelect } = update;
-            reset({ id, text, timeSelect, isUpdate: true });
+            const { id, text, size } = update;
+            reset({ id, text, size, isUpdate: true });
         }
         return () => {
             dispatch(fetchUpdateReset())
@@ -51,11 +52,11 @@ export const Form = () => {
 
     const setTime = () => {
         const hour = 10, small = 3, medium = 45, large = 60;
-        switch (form.timeSelect) {
-            case '0': {
+        switch (form.size) {
+            case 'small': {
                 return small * hour;
             }
-            case '1': {
+            case 'medium': {
                 return medium * hour;
             }
 
@@ -80,9 +81,9 @@ export const Form = () => {
                 />
                 <div className='select'>
                     <Icon name="timer" />
-                    <select name='timeSelect' value={form.timeSelect ? form.timeSelect : timeSelect} onChange={handleSelect}>
+                    <select name='size' value={form.size ? form.size : size} onChange={handleSelect}>
                         {timeOpt.map((item, index) => {
-                            return <option key={index} value={index}>{item}</option>
+                            return <option key={index} value={item.value}>{item.label}</option>
                         })}
                     </select>
                 </div>

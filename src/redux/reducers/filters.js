@@ -1,6 +1,6 @@
 import { types } from "../../types/types";
 
-const defaultState = 'All';
+const defaultState = 'all';
 
 
 export const filter = (state = defaultState, action) => {

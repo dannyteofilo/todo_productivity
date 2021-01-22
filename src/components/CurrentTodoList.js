@@ -1,25 +1,23 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { getTodos } from '../redux/selectors';
-import { List, Card, ProgressBar,Icon } from 'react-mdl';
+import { List, Card, Icon } from 'react-mdl';
 import { Todo } from './Todo';
+import { STATUS } from '../constants/constants';
 
 
 export const CurrentTodoList = () => {
     const allTodos = useSelector(getTodos);
-    const state = useSelector(state => state);
-    const todos = allTodos.filter(todo => todo.status === 'inProgress' || todo.status === 'onHold');
-    console.log('alltodos: ', allTodos);
+    const todos = allTodos.filter(todo => todo.status === STATUS.INPROGRESS || todo.status === STATUS.ONHOLD);
     return (
         <ul className='todo-list'>
             {
-                todos && todos.length &&
+                todos.length !== 0 &&
                 <div className='current'>
                     <div className='title'>
-                    <Icon name="timelapse" />
-                    <h5>Todo in progress</h5>
+                        <Icon name="timelapse" />
+                        <h5>Todo in progress</h5>
                     </div>
-                    {/* <ProgressBar indelterminate /> */}
                     <List>
                         {
                             todos.map((todo, index) => {

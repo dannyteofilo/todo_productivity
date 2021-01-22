@@ -3,16 +3,12 @@ import { ListItem, Checkbox, ListItemAction, Icon, IconToggle } from 'react-mdl'
 import { useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo, setStatus, fetchUpdate } from '../redux/actions/addTodo';
 import { Timer } from './Timer';
+import { STATUS } from '../constants/constants';
 
 export const Todo = ({ todo, timer, remove, update }) => {
     const { id, text, completed, status, time } = todo;
     const dispatch = useDispatch();
     const [play, setPlay] = useState(false);
-
-    const inProgress = 'inProgress';
-    const onHold = 'onHold';
-    const onTodo = 'todo';
-    const onDone = 'done';
 
     const handleStart = (status) => {
         if (!completed) {
@@ -22,8 +18,7 @@ export const Todo = ({ todo, timer, remove, update }) => {
     }
 
     useEffect(() => {
-        console.log('status: ', status);
-        if (status === onHold) {
+        if (status === STATUS.ONHOLD) {
             setPlay(false);
         } else {
             setPlay(true);
@@ -31,7 +26,6 @@ export const Todo = ({ todo, timer, remove, update }) => {
     }, [status])
 
     const onFinish = () => {
-        console.log('he finaizado');
         dispatch(toggleTodo(id));
     }
 
@@ -46,14 +40,14 @@ export const Todo = ({ todo, timer, remove, update }) => {
             </ListItemAction>
             <ListItemAction>
                 {
-                    (status === onTodo || status === onHold) &&
-                    <IconToggle ripple name="play_arrow" onClick={() => handleStart(inProgress)} />
+                    (status === STATUS.ONTODO || status === STATUS.ONHOLD) &&
+                    <IconToggle ripple name="play_arrow" onClick={() => handleStart(STATUS.INPROGRESS)} />
                 }
             </ListItemAction>
             <ListItemAction>
                 {
                     update &&
-                    <IconToggle ripple name="edit" onClick={() => dispatch(fetchUpdate(todo))} />
+                    <IconToggle ripple name="edit" onClick={() => dispatch(fetchUpdate(STATUS.TODO))} />
                 }
             </ListItemAction>
             <ListItemAction>
