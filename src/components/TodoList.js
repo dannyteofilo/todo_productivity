@@ -16,7 +16,7 @@ export const TodoList = () => {
         <ul className='todo-list'>
             {
                 todos && todos.length ?
-                    <List style={{ width: '300px' }}>
+                    <List>
                         {
                             todos.map((todo, index) => {
                                 return <Todo key={index} todo={todo} timer={false} remove={true} update={true} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ListItem, Checkbox, ListItemAction, Icon, IconToggle } from 'react-mdl';
+import { ListItem, Checkbox, ListItemAction, IconToggle } from 'react-mdl';
 import { useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo, setStatus, fetchUpdate } from '../redux/actions/addTodo';
 import { Timer } from './Timer';
@@ -47,7 +47,7 @@ export const Todo = ({ todo, timer, remove, update }) => {
             <ListItemAction>
                 {
                     update &&
-                    <IconToggle ripple name="edit" onClick={() => dispatch(fetchUpdate(STATUS.TODO))} />
+                    <IconToggle ripple name="edit" onClick={() => dispatch(fetchUpdate(todo))} />
                 }
             </ListItemAction>
             <ListItemAction>
