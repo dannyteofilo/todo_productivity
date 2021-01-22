@@ -11,6 +11,7 @@ export const todoListReducer = (state = initialstate, action) => {
                 ...state,
                 {
                     id,
+                    order:id,
                     completed: false,
                     ...content,
                 }

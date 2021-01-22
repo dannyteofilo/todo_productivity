@@ -39,4 +39,10 @@
         min-height: auto;
         margin-bottom: 10px;
     }
+
+    .drag{
+        &:hover{
+            cursor: pointer;
+        }
+    }
 }

@@ -32,7 +32,7 @@ export const TodoScreen = () => {
                 }
                 <div className='list'>
                     <TodoList />
-                </div>
+                </div>                
             </Card>
         </div>
     )

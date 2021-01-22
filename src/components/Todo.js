@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { ListItem, Checkbox, ListItemAction, IconToggle } from 'react-mdl';
+import { ListItem, Checkbox, ListItemAction,ListItemContent, IconToggle } from 'react-mdl';
 import { useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo, setStatus, fetchUpdate } from '../redux/actions/addTodo';
 import { Timer } from './Timer';
 import { STATUS } from '../constants/constants';
 
-export const Todo = ({ todo, timer, remove, update }) => {
+export const Todo = ({ todo, timer, remove, update, boxNumber, handleDrag, handleDrop }) => {
     const { id, text, completed, status, time } = todo;
     const dispatch = useDispatch();
     const [play, setPlay] = useState(false);
@@ -29,33 +29,49 @@ export const Todo = ({ todo, timer, remove, update }) => {
         dispatch(toggleTodo(id));
     }
 
+    const handleDragStart = () => {
+        handleDrag(boxNumber)
+    }
+
+    const handleOnDrop = (e) => {
+        const id = parseInt(e.currentTarget.id)
+        handleDrop(id)
+    }
+
     return (
-        <ListItem>
-            <Checkbox label={text} ripple checked={completed} onChange={() => dispatch(toggleTodo(id))} />
-            <ListItemAction>
-                {
-                    timer &&
-                    <Timer play={play} time={time} finish={onFinish} />
-                }
-            </ListItemAction>
-            <ListItemAction>
-                {
-                    (status === STATUS.ONTODO || status === STATUS.ONHOLD) &&
-                    <IconToggle ripple name="play_arrow" onClick={() => handleStart(STATUS.INPROGRESS)} />
-                }
-            </ListItemAction>
-            <ListItemAction>
-                {
-                    update &&
-                    <IconToggle ripple name="edit" onClick={() => dispatch(fetchUpdate(todo))} />
-                }
-            </ListItemAction>
-            <ListItemAction>
-                {
-                    remove &&
-                    <IconToggle ripple name="delete" onClick={() => dispatch(deleteTodo(id))} />
-                }
-            </ListItemAction>
-        </ListItem>
+        <div draggable={true}
+            id={boxNumber}
+            onDragOver={(ev) => ev.preventDefault()}
+            onDragStart={handleDragStart}
+            onDrop={handleOnDrop}>
+            <ListItem>
+                <ListItemContent icon='drag_handle' className='drag'></ListItemContent>
+                <Checkbox label={text} ripple checked={completed} onChange={() => dispatch(toggleTodo(id))} />
+                <ListItemAction>
+                    {
+                        timer &&
+                        <Timer play={play} time={time} finish={onFinish} />
+                    }
+                </ListItemAction>
+                <ListItemAction>
+                    {
+                        (status === STATUS.ONTODO || status === STATUS.ONHOLD) &&
+                        <IconToggle ripple name="play_arrow" onClick={() => handleStart(STATUS.INPROGRESS)} />
+                    }
+                </ListItemAction>
+                <ListItemAction>
+                    {
+                        update &&
+                        <IconToggle ripple name="edit" onClick={() => dispatch(fetchUpdate(todo))} />
+                    }
+                </ListItemAction>
+                <ListItemAction>
+                    {
+                        remove &&
+                        <IconToggle ripple name="delete" onClick={() => dispatch(deleteTodo(id))} />
+                    }
+                </ListItemAction>
+            </ListItem>
+        </div >
     )
 }
