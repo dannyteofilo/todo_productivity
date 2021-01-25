@@ -39,45 +39,42 @@ export const Todo = ({ todo, timer, remove, update, boxNumber, handleDrag, handl
     }
 
     return (
-        <div
-            draggable={draggable}
+        <ListItem draggable={draggable}
             id={boxNumber}
             onDragOver={(ev) => ev.preventDefault()}
             onDragStart={handleDragStart}
             onDrop={handleOnDrop}>
-            <ListItem>
-                <ListItemAction>
+            <ListItemAction>
                 {
                     draggable &&
                     <Icon name='drag_handle' className='drag'></Icon>
                 }
-                </ListItemAction>
-                <Checkbox label={text} ripple checked={completed} onChange={() => dispatch(toggleTodo(id))} />
-                <ListItemAction>
-                    {
-                        timer &&
-                        <Timer play={play} time={time} finish={onFinish} />
-                    }
-                </ListItemAction>
-                <ListItemAction>
-                    {
-                        (status === STATUS.ONTODO || status === STATUS.ONHOLD) &&
-                        <IconToggle ripple name="play_arrow" onClick={() => handleStart(STATUS.INPROGRESS)} />
-                    }
-                </ListItemAction>
-                <ListItemAction>
-                    {
-                        update &&
-                        <IconToggle ripple name="edit" onClick={() => dispatch(fetchUpdate(todo))} />
-                    }
-                </ListItemAction>
-                <ListItemAction>
-                    {
-                        remove &&
-                        <IconToggle ripple name="delete" onClick={() => dispatch(deleteTodo(id))} />
-                    }
-                </ListItemAction>
-            </ListItem>
-        </div >
+            </ListItemAction>
+            <Checkbox label={text} ripple checked={completed} onChange={() => dispatch(toggleTodo(id))} />
+            <ListItemAction>
+                {
+                    timer &&
+                    <Timer play={play} time={time} finish={onFinish} />
+                }
+            </ListItemAction>
+            <ListItemAction>
+                {
+                    (status === STATUS.ONTODO || status === STATUS.ONHOLD) &&
+                    <IconToggle ripple name="play_arrow" onClick={() => handleStart(STATUS.INPROGRESS)} />
+                }
+            </ListItemAction>
+            <ListItemAction>
+                {
+                    update &&
+                    <IconToggle ripple name="edit" onClick={() => dispatch(fetchUpdate(todo))} />
+                }
+            </ListItemAction>
+            <ListItemAction>
+                {
+                    remove &&
+                    <IconToggle ripple name="delete" onClick={() => dispatch(deleteTodo(id))} />
+                }
+            </ListItemAction>
+        </ListItem >
     )
 }

@@ -7,6 +7,7 @@ import { CurrentTodoList } from '../components/CurrentTodoList';
 import { useSelector } from 'react-redux'
 import { getTodos } from '../redux/selectors';
 import {CODE} from '../constants/constants';
+import { RandomTodos } from '../components/RandomTodos';
 
 
 export const TodoScreen = () => {
@@ -34,10 +35,14 @@ export const TodoScreen = () => {
                 <div className='list'>
                     <TodoList />
                 </div>
+                <div>
+                    <RandomTodos/>
+                </div>
             </Card>
-            <div>
+            <div className='button-random'>
                 <a href={CODE.url} className='code'><i className="fab fa-github-alt fa-2x"></i><span>Source code</span></a>
             </div>
+            
         </div>
     )
 }

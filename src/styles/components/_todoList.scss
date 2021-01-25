@@ -14,6 +14,8 @@
 
 .todo-list{
     padding: 0;
+        max-height: 150px;
+        overflow-y: scroll;
     >.list{
         @extend .flexColumn;
     }
@@ -31,7 +33,7 @@
             @extend .flexRow;
             width: 100%;            
             color: #fdd835;
-        }
+        }        
     }
 
     .mdl-card {
@@ -45,5 +47,10 @@
         &:hover{
             cursor: pointer;
         }
+    }
+
+    .mdl-list__item{
+        height: 35px;
+        min-height: 35px;
     }
 }

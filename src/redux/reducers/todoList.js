@@ -11,7 +11,7 @@ export const todoListReducer = (state = initialstate, action) => {
                 ...state,
                 {
                     id,
-                    order:id,
+                    order: id,
                     completed: false,
                     ...content,
                 }
@@ -42,6 +42,13 @@ export const todoListReducer = (state = initialstate, action) => {
             return state.map(todo => (
                 todo.id === id ? { ...content, completed: false } : todo
             ))
+        }
+
+        case types.set_random_todos: {
+            return [
+                ...state,
+                ...action.payload
+            ]
         }
 
         default:

@@ -46,30 +46,33 @@ export const TodoList = () => {
         setTodos(newTodosState);
     };
     return (
-        <ul className='todo-list'>
-            {
-                todos && todos.length ?
-                    <List>
-                        {todos
-                            .sort((a, b) => a.order - b.order)
-                            .map((todo, index) => {
-                                return <Todo key={index}
-                                    todo={todo}
-                                    draggable={true}
-                                    timer={false}
-                                    remove={true}
-                                    update={true}
-                                    boxNumber={todo.id}
-                                    handleDrag={(e) => handleDrag(e)}
-                                    handleDrop={(e) => handleDrop(e)} />
-                            })
-                        }
-                    </List>
-                    : <div className='list-empty'>
-                        <i className='fas fa-list fa-1x'></i>
-                        <span>List todo Empty </span>
-                    </div>
-            }
-        </ul>
+        <div>
+            <ul className='todo-list'>
+                {
+                    todos && todos.length ?
+                        <List>
+                            {todos
+                                .sort((a, b) => a.order - b.order)
+                                .map((todo, index) => {
+                                    return <Todo key={index}
+                                        todo={todo}
+                                        draggable={true}
+                                        timer={false}
+                                        remove={true}
+                                        update={true}
+                                        boxNumber={todo.id}
+                                        handleDrag={(e) => handleDrag(e)}
+                                        handleDrop={(e) => handleDrop(e)} />
+                                })
+                            }
+                        </List>
+                        : <div className='list-empty'>
+                            <i className='fas fa-list fa-1x'></i>
+                            <span>List todo Empty </span>
+                        </div>
+                }
+            </ul>
+            <div>Total: {todos.length}</div>
+        </div>
     )
 }
