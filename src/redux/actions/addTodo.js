@@ -25,18 +25,26 @@ export const deleteTodo = id => ({
     payload: { id },
 })
 
-export const updatetodo= (id,content)  =>({
-    type:types.update_todo,
-    payload:{id,content}
+export const updatetodo = (id, content) => ({
+    type: types.update_todo,
+    payload: { id, content }
 })
 
-export const fetchUpdate=content=>({
-    type:types.fetch_update,
-    payload:content,
+export const fetchUpdate = content => ({
+    type: types.fetch_update,
+    payload: content,
 })
 
-export const fetchUpdateReset=()=>({
-    type:types.fetch_update_reset,
+export const fetchUpdateReset = () => ({
+    type: types.fetch_update_reset,
 })
+
+export const fetchRandomTodos = (todos, size) => {
+    nextTodoId = size;
+    return {
+        type: types.set_random_todos,
+        payload: todos,
+    }
+}
 
 export const setFilter = filter => ({ type: types.set_filter, payload: { filter } });

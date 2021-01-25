@@ -18,6 +18,18 @@ export const STATUS = {
     ONDONE: 'done',
 }
 
+export const RANDOMTEXT = [
+    'Technical Requirement',
+    'Development',
+    'Implementation & Uni',
+    'Functional & System',
+    'Performance & Load',
+    'Go Live',
+    'Project Meeting',
+    'Project Management',
+    'User Acceptance Test'
+]
+
 export const CODE = {
     url: 'https://github.com/dannyteofilo/todo_productivity',
 }

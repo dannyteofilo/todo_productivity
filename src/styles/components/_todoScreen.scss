@@ -42,11 +42,6 @@
             }            
         }
 
-        >.list{
-            max-height: 500px;
-            overflow-y: scroll;
-        }
-
         >.form,.list,.dividir{
             width: 50%;
             @include respond-to(small-screens){
@@ -64,4 +59,8 @@
            margin-bottom: 10px;
         }
     }   
+
+    >.button-random{
+        margin-top: 5px;
+    }
 }
