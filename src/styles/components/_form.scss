@@ -8,16 +8,36 @@
         justify-content: space-evenly;
         align-items: center;
 
+        @include respond-to(small-screens) {
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        >.mdl-textfield{
+            @include respond-to(small-screens) {
+                width: 100%;
+            }
+        }
+
         >.select{
             width: 140px;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
+
+            @include respond-to(small-screens) {
+                width: 50%;
+            }
         }
 
         > button{
              margin-left: 5px;
              height: 40px;
+
+             @include respond-to(small-screens) {
+                width: 50%;
+                margin-top: 10px;
+            }
         }
 
     }

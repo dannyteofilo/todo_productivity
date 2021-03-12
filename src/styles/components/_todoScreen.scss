@@ -1,14 +1,12 @@
 .todo-screen-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
-    background-color: #80d086;
 
     >.fas{
         color: white;
+        margin-top: 50px;
     }
 
     .code{
@@ -31,7 +29,6 @@
         align-items: center;
         margin-top: 20px;
         padding: 40px 0;
-        max-height: 85vh;
 
         >.title{
             color: #40c4ff;
