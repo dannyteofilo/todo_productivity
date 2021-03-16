@@ -21,9 +21,7 @@ export const CurrentTodoList = () => {
                     <List>
                         {
                             todos.map((todo, index) => {
-                                return <Card shadow={3} key={index}>
-                                    <Todo todo={todo} timer={true} remove={false} update={false} />
-                                </Card>
+                                return <Todo key={index} todo={todo} timer={true} remove={false} update={false} draggable={false}/>
                             })
                         }
                     </List>

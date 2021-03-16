@@ -16,6 +16,8 @@
     padding: 0;
     max-height: 300px;
     overflow-y: scroll;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     >.list{
         @extend .flexColumn;
@@ -51,7 +53,11 @@
     }
 
     .mdl-list__item{
-        height: 35px;
+        height: 50px;
         min-height: 35px;
     }
+}
+
+.mdl-list__item .mdl-list__item-secondary-content{
+    margin-left: 0!important;
 }

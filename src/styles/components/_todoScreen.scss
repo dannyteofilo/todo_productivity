@@ -34,6 +34,12 @@
             color: #40c4ff;
             text-decoration: underline;
 
+            h3{
+                @include respond-to(small-screens){
+                    font-size: 20px;
+                }
+            }
+
             .fas{
                 margin-right: 10px;
             }            
