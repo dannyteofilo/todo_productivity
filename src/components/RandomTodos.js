@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTodos } from '../redux/selectors';
 import { fetchRandomTodos } from '../redux/actions/addTodo';
 import { RANDOMTEXT, SIZEOPTIONS } from '../constants/constants';
+import { setTime } from '../utils/timerSize';
 
 
 export const RandomTodos = () => {
@@ -48,23 +49,7 @@ export const RandomTodos = () => {
         let randomSize = Math.random() * (sizeOpt.length);
         randomSize = Math.floor(randomSize);
         return sizeOpt[randomSize].value;
-    }
-
-    const setTime = (size) => {
-        const hour = 60, small = 30, medium = 45, large = 60;
-        switch (size) {
-            case 'small': {
-                return small * hour;
-            }
-            case 'medium': {
-                return medium * hour;
-            }
-
-            default: {
-                return large * hour;
-            }
-        }
-    }
+    }  
 
     const handleMake = () => {
         let count = id;

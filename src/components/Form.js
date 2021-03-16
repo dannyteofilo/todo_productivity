@@ -3,7 +3,8 @@ import { useForm } from '../hooks/useForm';
 import { Textfield, Button, Icon } from 'react-mdl';
 import { addTodo, updatetodo } from '../redux/actions/addTodo';
 import { useDispatch, useSelector } from 'react-redux';
-import {SIZEOPTIONS} from '../constants/constants';
+import { SIZEOPTIONS } from '../constants/constants';
+import { setTime } from '../utils/timerSize';
 
 export const Form = () => {
 
@@ -32,35 +33,20 @@ export const Form = () => {
         if (update) {
             const { id, text, size } = update;
             reset({ id, text, size, isUpdate: true });
-        }    
+        }
     }, [update])
 
     const handleAdd = (e) => {
-        const { isUpdate, id } = formValues
+        console.log('form Values: ', formValues);
+        const { isUpdate, id, size } = formValues
         e.preventDefault();
-        const data = { ...formValues, status: 'todo', date: new Date(), time: setTime() }
+        const data = { ...formValues, status: 'todo', date: new Date(), time: setTime(size) }
         if (isUpdate) {
             dispatch(updatetodo(id, data))
         } else {
             dispatch(addTodo(data))
         }
         reset();
-    }
-
-    const setTime = () => {
-        const hour = 60, small = 30, medium = 45, large = 60;
-        switch (form.size) {
-            case 'small': {
-                return small * hour;
-            }
-            case 'medium': {
-                return medium * hour;
-            }
-
-            default: {
-                return large * hour;
-            }
-        }
     }
 
     const handleSelect = (e) => {
