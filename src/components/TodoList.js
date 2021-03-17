@@ -72,7 +72,7 @@ export const TodoList = () => {
                         </div>
                 }
             </ul>
-            <div>Total: {todos.length}</div>
+            <div className='label-total'>Total: {todos.length}</div>
         </div>
     )
 }
