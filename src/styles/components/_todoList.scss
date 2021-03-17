@@ -61,3 +61,10 @@
 .mdl-list__item .mdl-list__item-secondary-content{
     margin-left: 0!important;
 }
+
+.label-total{
+    @include respond-to(small-screens) {
+        margin: 10px 0;
+        font-size: 12px;
+    }
+}
