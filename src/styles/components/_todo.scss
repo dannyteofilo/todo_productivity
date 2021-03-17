@@ -1,0 +1,16 @@
+.dragg{
+    display: inline  !important;
+    @include respond-to(medium-screens){
+        display: none !important;
+    }
+
+    @include respond-to(small-screens){
+        display: none !important;
+    }
+
+}
+.mdl-list__item-primary-content{
+    @include respond-to(small-screens){
+        font-size: 12px !important;
+    } 
+}

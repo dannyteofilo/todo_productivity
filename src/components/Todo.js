@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ListItem, Checkbox, ListItemAction, Icon, IconToggle } from 'react-mdl';
+import { ListItem, Checkbox, ListItemAction, Icon, IconToggle, ListItemContent } from 'react-mdl';
 import { useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo, setStatus, fetchUpdate } from '../redux/actions/addTodo';
 import { Timer } from './Timer';
@@ -39,18 +39,19 @@ export const Todo = ({ todo, timer, remove, update, boxNumber, handleDrag, handl
     }
 
     return (
-        <ListItem draggable={draggable}
+        <ListItem
+            threeLine
+            draggable={draggable}
             id={boxNumber}
             onDragOver={(ev) => ev.preventDefault()}
             onDragStart={handleDragStart}
             onDrop={handleOnDrop}>
             <ListItemAction>
-                {
-                    draggable &&
-                    <Icon name='drag_handle' className='drag'></Icon>
-                }
+                <Checkbox ripple checked={completed} onChange={() => dispatch(toggleTodo(id))} />
             </ListItemAction>
-            <Checkbox label={text} ripple checked={completed} onChange={() => dispatch(toggleTodo(id))} />
+            <ListItemContent>
+                {text}
+            </ListItemContent>
             <ListItemAction>
                 {
                     timer &&
@@ -75,6 +76,13 @@ export const Todo = ({ todo, timer, remove, update, boxNumber, handleDrag, handl
                     <IconToggle ripple name="delete" onClick={() => dispatch(deleteTodo(id))} />
                 }
             </ListItemAction>
+            <ListItemAction className='dragg'>
+                {
+                    draggable &&
+                    <Icon name='drag_handle' className='drag'></Icon>
+                }
+            </ListItemAction>
+
         </ListItem >
     )
 }

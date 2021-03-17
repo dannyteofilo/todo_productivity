@@ -1,8 +1,8 @@
 export const FILTERS = [
-    { label: 'All', value: 'all' },
-    { label: 'Small', value: 'small' },
-    { label: 'Medium', value: 'medium' },
-    { label: 'Large', value: 'large' },
+    { labelMobile: 'A', label: 'All', value: 'all' },
+    { labelMobile: 'S', label: 'Small', value: 'small' },
+    { labelMobile: 'M', label: 'Medium', value: 'medium' },
+    { labelMobile: 'L', label: 'Large', value: 'large' },
 ]
 
 export const SIZEOPTIONS = [
